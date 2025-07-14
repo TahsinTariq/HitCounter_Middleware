@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "api-hit-counter"
+version = "0.1.0"
+authors = [
+  { name="Your Name", email="you@example.com" },
+]
+description = "A middleware for FastAPI to track API hits."
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Framework :: FastAPI",
+]
+dependencies = [
+    "fastapi",
+    "requests",
+    "uvicorn",
+]
+
+[project.optional-dependencies]
+dashboard = ["streamlit", "pandas", "plotly"]
+dev = ["pytest-asyncio", "httpx"]
+
+[project.urls]
+"Homepage" = "https://github.com/your-username/api-hit-counter"
+"Bug Tracker" = "https://github.com/your-username/api-hit-counter/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]

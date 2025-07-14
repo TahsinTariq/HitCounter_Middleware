@@ -1,0 +1,12 @@
+fastapi
+requests
+uvicorn
+
+[dashboard]
+streamlit
+pandas
+plotly
+
+[dev]
+pytest-asyncio
+httpx
