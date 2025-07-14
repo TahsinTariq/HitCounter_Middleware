@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "api-hit-counter"
 version = "0.1.0"
 authors = [
-  { name="Your Name", email="you@example.com" },
+  { name="TahsinTariq", email="tahsinbanna@gmail.com" },
 ]
 description = "A middleware for FastAPI to track API hits."
 readme = "README.md"
@@ -31,6 +31,5 @@ dev = ["pytest-asyncio", "httpx"]
 "Homepage" = "https://github.com/TahsinTariq/HitCounter_Middleware"
 "Bug Tracker" = "https://github.com/TahsinTariq/HitCounter_Middleware/issues"
 
-[tool.setuptools]
-package-dir = {"" = "src"}
-packages = ["api_hit_counter"]
+[tool.setuptools.packages.find]
+where = ["src"]
