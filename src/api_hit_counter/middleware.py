@@ -10,7 +10,7 @@ class HitCounterMiddleware:
     def __init__(self, app, project_name: str, base_api_url: str = None):
         self.app = app
         self.project_name = project_name
-        self.base_api_url = base_api_url or os.environ.get("HITCOUNTER_URL") or "http://192.168.101.231:10101"
+        self.base_api_url = base_api_url or os.environ.get("HITCOUNTER_URL") or "http://192.168.101.230:10101"
         self.fixed_endpoint = "/track_hit"
 
     def _track_hit(self, request: Request, response_time: float):

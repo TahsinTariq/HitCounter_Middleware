@@ -34,4 +34,4 @@ The `HitCounterMiddleware` accepts the following arguments:
 -   `project_name` (str): **Required**. A unique name for your project to identify the hits.
 -   `base_api_url` (str, optional): The base URL of the hit counter service.
     -   If not provided, the middleware will look for the `HITCOUNTER_URL` environment variable.
-    -   If the environment variable is also not set, it will use the default value: `http://192.168.101.231:10101`, which is the aci gpuserver2x address.
+    -   If the environment variable is also not set, it will use the default value: `http://192.168.101.2310:10101`, which is the aci gpuserver address.
