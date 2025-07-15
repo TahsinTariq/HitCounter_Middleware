@@ -4,14 +4,19 @@ from starlette.concurrency import run_in_threadpool
 from datetime import datetime
 import time
 import asyncio
+import os
 
 class HitCounterMiddleware:
-    def __init__(self, app, project_name: str, counting_api_url: str):
+    def __init__(self, app, project_name: str, base_api_url: str = None):
         self.app = app
         self.project_name = project_name
-        self.counting_api_url = counting_api_url
+        self.base_api_url = base_api_url or os.environ.get("HITCOUNTER_URL") or "http://192.168.101.231:10101"
+        self.fixed_endpoint = "/track_hit"
 
     def _track_hit(self, request: Request, response_time: float):
+        if not self.base_api_url:
+            return
+
         payload = {
             "project_name": self.project_name,
             "endpoint": request.url.path,
@@ -23,7 +28,8 @@ class HitCounterMiddleware:
 
         def send_request():
             try:
-                requests.post(self.counting_api_url, json=payload, timeout=5).raise_for_status()
+                full_url = f"{self.base_api_url.rstrip('/')}{self.fixed_endpoint}"
+                requests.post(full_url, json=payload, timeout=5).raise_for_status()
             except requests.exceptions.RequestException:
                 pass  # Silently fail
 

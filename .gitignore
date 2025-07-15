@@ -1,1 +1,3 @@
 dist
+.gemini
+*.egg-info/
